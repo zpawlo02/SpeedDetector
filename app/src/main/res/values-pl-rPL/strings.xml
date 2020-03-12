@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<resources>
+    <string name="app_name">Prędkościomierz</string>
+
+    <string name="objCar">Samochód</string>
+    <string name="objPerson">Osoba</string>
+    <string name="objBike" >Rower</string>
+    <string name="objAnimal">Zwierzę</string>
+    <string name="objPlane">Samolot</string>
+    <string name="detect_speed">WYKRYJ PRĘDKOŚĆ</string>
+</resources>

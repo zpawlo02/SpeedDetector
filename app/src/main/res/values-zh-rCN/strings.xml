@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<string name="app_name">"速度探測器 "</string>
+	<string name="objCar">汽車</string>
+	<string name="objPerson">人</string>
+	<string name="objBike" translatable="false">自行车</string>
+	<string name="objAnimal" translatable="false">动物</string>
+	<string name="objPlane" translatable="false">"飛機 "</string>
+    <string name="detect_speed">檢測速度</string>
+
+</resources>

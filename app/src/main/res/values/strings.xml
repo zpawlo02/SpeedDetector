@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">SpeedDetector</string>
+
+    <string name="objCar">Car</string>
+    <string name="objPerson">Person</string>
+    <string name="objBike" >Bike</string>
+    <string name="objAnimal">Animal</string>
+    <string name="objPlane">Plane</string>
+    <string name="detect_speed">DETECT SPEED</string>
 </resources>

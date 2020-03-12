@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<string name="app_name">Geschwindigkeitsdetektor</string>
+	<string name="objCar">Auto</string>
+	<string name="objPerson">Person</string>
+	<string name="objBike" translatable="false">Fahrrad</string>
+	<string name="objAnimal" translatable="false">Tier</string>
+	<string name="objPlane" translatable="false">Flugzeug</string>
+	<string name="detect_speed">GESCHWINDIGKEIT ERKENNEN</string>
+
+</resources>

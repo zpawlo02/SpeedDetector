@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<string name="app_name">Détecteur de vitesse  de vitesse</string>
+	<string name="objCar">Voiture</string>
+	<string name="objPerson">"La personne "</string>
+	<string name="objBike" translatable="false">Bicyclette</string>
+	<string name="objAnimal" translatable="false">Animale</string>
+	<string name="objPlane" translatable="false">Avion</string>
+    <string name="detect_speed">DÉTECTER LA VITESSE</string>
+
+</resources>

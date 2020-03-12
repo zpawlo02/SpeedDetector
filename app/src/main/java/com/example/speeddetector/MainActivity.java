@@ -12,8 +12,10 @@ import android.hardware.Camera;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.VideoView;
 
@@ -25,12 +27,19 @@ public class MainActivity extends AppCompatActivity {
     private Camera camera;
     private FrameLayout frameLayout;
     private CameraPreview showCamera;
+    private Spinner spinnerObjects;
+    private Objects objects = new Objects();
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        spinnerObjects = (Spinner) findViewById(R.id.spinnerChoseObject);
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, objects.getObj());
+        spinnerObjects.setAdapter(adapter);
         if (ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.CAMERA)
                 == PackageManager.PERMISSION_DENIED){
             requestPermissions(new String[]{Manifest.permission.CAMERA}, 100);

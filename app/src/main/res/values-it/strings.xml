@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<string name="app_name">"Rilevatore di velocità "</string>
+	<string name="objCar">Auto</string>
+	<string name="objPerson">Persona</string>
+	<string name="objBike" translatable="false">"Bicicletta "</string>
+	<string name="objAnimal" translatable="false">Animale</string>
+	<string name="objPlane" translatable="false">Aereo</string>
+    <string name="detect_speed">RILEVARE LA VELOCITÀ</string>
+
+</resources>

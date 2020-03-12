@@ -18,12 +18,18 @@
       </FrameLayout>
 
       <Button
-          android:id="@+id/button"
+          android:id="@+id/buttonDedectSpeed"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
-          android:text="DETECT SPEED"
+          android:text="@string/detect_speed"
           android:layout_gravity="center"
           android:layout_marginTop="10dp"/>
+
+      <Spinner
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:id="@+id/spinnerChoseObject"
+          android:spinnerMode="dropdown"/>
    </LinearLayout>
 
 

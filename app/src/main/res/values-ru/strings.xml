@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<string name="app_name">Детектор скорости</string>
+	<string name="objCar">Машина</string>
+	<string name="objPerson">Человек</string>
+	<string name="objBike" translatable="false">Велосипед</string>
+	<string name="objAnimal" translatable="false">животное</string>
+	<string name="objPlane" translatable="false">Самолет</string>
+    <string name="detect_speed">ОБНАРУЖИТЬ СКОРОСТЬ</string>
+
+</resources>

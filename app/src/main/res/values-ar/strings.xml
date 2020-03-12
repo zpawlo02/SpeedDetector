@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<string name="app_name">"كاشف السرعة "</string>
+	<string name="objCar">سيارة</string>
+	<string name="objPerson">شخص</string>
+	<string name="objBike" >"دراجة هوائية "</string>
+	<string name="objAnimal">حيوان</string>
+	<string name="objPlane">طائرة</string>
+	<string name="detect_speed">"كشف السرعة "</string>
+
+</resources>

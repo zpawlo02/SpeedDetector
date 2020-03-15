@@ -8,5 +8,6 @@
 	<string name="objAnimal" translatable="false">Tier</string>
 	<string name="objPlane" translatable="false">Flugzeug</string>
 	<string name="detect_speed">GESCHWINDIGKEIT ERKENNEN</string>
+	<string name="speed">0 KM/H</string>
 
 </resources>

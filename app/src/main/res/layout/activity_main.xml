@@ -17,6 +17,16 @@
 
       </FrameLayout>
 
+      <Spinner
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:id="@+id/spinnerChoseObject"
+          android:layout_gravity="center"
+          android:spinnerMode="dropdown"
+          android:layout_marginTop="5dp"
+          android:layout_marginLeft="15dp"
+          android:layout_marginRight="15dp"/>
+
       <Button
           android:id="@+id/buttonDedectSpeed"
           android:layout_width="wrap_content"
@@ -25,11 +35,16 @@
           android:layout_gravity="center"
           android:layout_marginTop="10dp"/>
 
-      <Spinner
+
+      <TextView
+          android:id="@+id/textSpeed"
+          android:layout_marginTop="5dp"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
-          android:id="@+id/spinnerChoseObject"
-          android:spinnerMode="dropdown"/>
+          android:textSize="50sp"
+          android:text="@string/speed"
+          android:gravity="center"/>
+
    </LinearLayout>
 
 

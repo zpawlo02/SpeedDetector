@@ -10,4 +10,5 @@
     <string name="objAnimal">Zwierzę</string>
     <string name="objPlane">Samolot</string>
     <string name="detect_speed">WYKRYJ PRĘDKOŚĆ</string>
+    <string name="speed">0 KM/H</string>
 </resources>

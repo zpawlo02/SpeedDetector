@@ -8,5 +8,6 @@
 	<string name="objAnimal" translatable="false">AnimalP</string>
 	<string name="objPlane" translatable="false">Avião</string>
     <string name="detect_speed">DETECTAR VELOCIDADE</string>
+    <string name="speed">0 KM/H</string>
 
 </resources>

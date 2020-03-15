@@ -7,4 +7,5 @@
     <string name="objAnimal">Animal</string>
     <string name="objPlane">Plane</string>
     <string name="detect_speed">DETECT SPEED</string>
+    <string name="speed">0 KM/H</string>
 </resources>

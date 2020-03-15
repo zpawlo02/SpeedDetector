@@ -8,5 +8,6 @@
 	<string name="objAnimal">حيوان</string>
 	<string name="objPlane">طائرة</string>
 	<string name="detect_speed">"كشف السرعة "</string>
+    <string name="speed">0 KM/H</string>
 
 </resources>

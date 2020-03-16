@@ -87,11 +87,17 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra(MediaStore.EXTRA_DURATION_LIMIT, 5);
                 startActivityForResult(intent,REQUEST_TAKE_VIDEO);
                //TODO FIX SETTING SPEED
-                Random rs = new Random();
-                textViewSpeed.setText(String.format("%.2f KM/H", rs.nextDouble() * (maxSpeed - minSpeed)));
 
             }
         });
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Random rs = new Random();
+        textViewSpeed.setText(String.format("%.2f KM/H", rs.nextDouble() * (maxSpeed - minSpeed)));
+
     }
 
     @Override
@@ -102,6 +108,7 @@ public class MainActivity extends AppCompatActivity {
             camera = Camera.open();
             showCamera = new CameraPreview(getApplicationContext(), camera);
             frameLayout.addView(showCamera);
+
         }catch (Exception e){
             e.printStackTrace();
         }

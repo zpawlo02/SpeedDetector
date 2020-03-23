@@ -22,6 +22,12 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.VideoView;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
+
 import java.io.IOException;
 import java.util.Random;
 
@@ -36,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
     private Integer REQUEST_TAKE_VIDEO = 101,
             maxSpeed = 330, minSpeed = 0;
     private TextView textViewSpeed;
-
+    private AdView mAdView;
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
@@ -44,6 +50,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        MobileAds.initialize(this, new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus) {
+
+            }
+        });
+        mAdView = (AdView) findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
         spinnerObjects = (Spinner) findViewById(R.id.spinnerChoseObject);
         buttonDetect = (Button) findViewById(R.id.buttonDedectSpeed);
         textViewSpeed = (TextView) findViewById(R.id.textSpeed);
@@ -96,7 +111,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onStop() {
         super.onStop();
         Random rs = new Random();
-        textViewSpeed.setText(String.format("%.2f KM/H", rs.nextDouble() * (maxSpeed - minSpeed)));
+        textViewSpeed.setText(String.format("%.2f KM/H", rs.nextDouble() * (maxSpeed - minSpeed) + minSpeed));
 
     }
 

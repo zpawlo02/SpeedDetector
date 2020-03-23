@@ -8,4 +8,6 @@
     <string name="objPlane">Plane</string>
     <string name="detect_speed">DETECT SPEED</string>
     <string name="speed">0 KM/H</string>
+    <string name="banner_ad_unit_id" translatable="false">ca-app-pub-3940256099942544/6300978111</string>
+
 </resources>

@@ -7,7 +7,10 @@ import androidx.core.content.ContextCompat;
 
 import android.Manifest;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.hardware.Camera;
 import android.os.Build;
@@ -43,12 +46,19 @@ public class MainActivity extends AppCompatActivity {
             maxSpeed = 330, minSpeed = 0;
     private TextView textViewSpeed;
     private AdView mAdView;
+    private boolean clicked;
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        SharedPreferences preferences = getSharedPreferences("PREFS",0);
+        boolean ifShowDialog = preferences.getBoolean("showDialog",true);
+        if(ifShowDialog){
+            showWarning();
+        }
 
         MobileAds.initialize(this, new OnInitializationCompleteListener() {
             @Override
@@ -102,6 +112,7 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra(MediaStore.EXTRA_DURATION_LIMIT, 5);
                 startActivityForResult(intent,REQUEST_TAKE_VIDEO);
                //TODO FIX SETTING SPEED
+                clicked = true;
 
             }
         });
@@ -110,8 +121,11 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStop() {
         super.onStop();
-        Random rs = new Random();
-        textViewSpeed.setText(String.format("%.2f KM/H", rs.nextDouble() * (maxSpeed - minSpeed) + minSpeed));
+        if(clicked){
+            Random rs = new Random();
+            textViewSpeed.setText(String.format("%.2f KM/H", rs.nextDouble() * (maxSpeed - minSpeed) + minSpeed));
+            clicked = false;
+        }
 
     }
 
@@ -127,6 +141,31 @@ public class MainActivity extends AppCompatActivity {
         }catch (Exception e){
             e.printStackTrace();
         }
+    }
 
+    private void showWarning(){
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+        alertDialogBuilder.setMessage("DFSSDFSDFSDFSDFSD")
+                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                })
+                .setNeutralButton("NEVER SHOW AGAIN", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+
+                        SharedPreferences preferences = getSharedPreferences("PREFS",0);
+                        SharedPreferences.Editor editor = preferences.edit();
+                        editor.putBoolean("showDialog", false);
+                        editor.apply();
+                    }
+                });
+
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.setCanceledOnTouchOutside(false);
+        alertDialog.show();
     }
 }

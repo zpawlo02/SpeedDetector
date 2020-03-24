@@ -9,5 +9,6 @@
 	<string name="objPlane" translatable="false">Avião</string>
     <string name="detect_speed">DETECTAR VELOCIDADE</string>
     <string name="speed">0 KM/H</string>
+    <string name="warning">O aplicativo é apenas para diversão, não é um velocímetro real.</string>
 
 </resources>

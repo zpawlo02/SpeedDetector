@@ -145,7 +145,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void showWarning(){
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
-        alertDialogBuilder.setMessage("DFSSDFSDFSDFSDFSD")
+        alertDialogBuilder.setMessage(R.string.warning)
                 .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {

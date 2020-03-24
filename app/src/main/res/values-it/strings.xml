@@ -9,5 +9,6 @@
 	<string name="objPlane" translatable="false">Aereo</string>
     <string name="detect_speed">RILEVARE LA VELOCITÀ</string>
     <string name="speed">0 KM/H</string>
+    <string name="warning">L\'applicazione è solo per divertimento, non è un vero tachimetro.</string>
 
 </resources>

@@ -9,5 +9,6 @@
 	<string name="objPlane" translatable="false">Самолет</string>
     <string name="detect_speed">ОБНАРУЖИТЬ СКОРОСТЬ</string>
     <string name="speed">0 KM/H</string>
+    <string name="warning">Приложение только для развлечения, это не настоящий спидометр.</string>
 
 </resources>

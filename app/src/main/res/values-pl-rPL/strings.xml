@@ -11,4 +11,6 @@
     <string name="objPlane">Samolot</string>
     <string name="detect_speed">WYKRYJ PRĘDKOŚĆ</string>
     <string name="speed">0 KM/H</string>
+    <string name="warning">Aplikacja służy tylko do zabawy, nie jest to prawdziwy prędkościomierz.
+Nie używaj telefonu, gdy prowadzisz jakiś pojazd oraz w sytuacjach, w których może to zagrażać Twojemu życiu lub zdrowiu.</string>
 </resources>

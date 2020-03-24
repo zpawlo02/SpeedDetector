@@ -9,5 +9,5 @@
     <string name="detect_speed">DETECT SPEED</string>
     <string name="speed">0 KM/H</string>
     <string name="banner_ad_unit_id" translatable="false">ca-app-pub-3940256099942544/6300978111</string>
-
+    <string name="warning">" The application is for fun only, it is not a real speedometer. Do not use the phone when you are driving a vehicle or in situations where it may endanger your life or health."</string>
 </resources>

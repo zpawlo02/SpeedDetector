@@ -10,6 +10,7 @@
 	<string name="detect_speed">GESCHWINDIGKEIT ERKENNEN</string>
 	<string name="speed">0 KM/H</string>
 	<string name="banner_ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>
+	<string name="warning">Die Anwendung dient nur zum Spaß, es ist kein echter Tacho.</string>
 
 
 </resources>

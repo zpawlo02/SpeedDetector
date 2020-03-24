@@ -9,5 +9,6 @@
 	<string name="objPlane" translatable="false">"飛機 "</string>
     <string name="detect_speed">檢測速度</string>
     <string name="speed">0 KM/H</string>
+    <string name="warning">該應用程序只是出於娛樂目的，它不是真正的速度計。</string>
 
 </resources>

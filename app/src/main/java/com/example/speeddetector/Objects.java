@@ -1,13 +1,22 @@
 package com.example.speeddetector;
 
+import android.content.Context;
+
 import java.util.ArrayList;
 
 public class Objects {
 
-    private String[] obj = new String[]{"Car", "Person", "Bike", "Animal","Plane"};
+
+
+    private String[] obj = new String[]{};
     private Integer[] maxes = new Integer[]{330, 32, 60, 70, 1300};
     private Integer[] min = new Integer[]{0, 0, 0, 5, 600};
-    public Objects() {
+    public Objects(Context context) {
+        obj = new String[]{context.getResources().getString(R.string.objCar).toUpperCase(),
+                context.getResources().getString(R.string.objPerson).toUpperCase(),
+                context.getResources().getString(R.string.objBike).toUpperCase(),
+                context.getResources().getString(R.string.objAnimal).toUpperCase(),
+                context.getResources().getString(R.string.objPlane).toUpperCase()};
     }
 
     public Integer[] getMaxes() {

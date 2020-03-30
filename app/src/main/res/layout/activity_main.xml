@@ -15,6 +15,9 @@
           android:id="@+id/flVideo"
           android:layout_width="match_parent"
           android:layout_height="400dp"
+          android:layout_marginStart="1dp"
+          android:layout_marginTop="1dp"
+          android:layout_marginEnd="1dp"
           app:layout_constraintEnd_toEndOf="parent"
           app:layout_constraintStart_toStartOf="parent"
           app:layout_constraintTop_toTopOf="parent">
@@ -23,11 +26,14 @@
 
       <Spinner
           android:id="@+id/spinnerChoseObject"
-          android:layout_width="match_parent"
+          android:layout_width="wrap_content"
           android:layout_height="60dp"
-          android:layout_gravity="center"
           android:layout_marginStart="16dp"
+          android:layout_marginTop="16dp"
           android:layout_marginEnd="16dp"
+          android:background="@drawable/borderspinner"
+          android:gravity="center"
+          android:popupBackground="@drawable/borederbutton"
           android:spinnerMode="dropdown"
           app:layout_constraintEnd_toEndOf="parent"
           app:layout_constraintStart_toStartOf="parent"
@@ -38,6 +44,9 @@
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:layout_gravity="center"
+          android:layout_marginTop="8dp"
+          android:background="@drawable/borederbutton"
+          android:padding="20dp"
           android:text="@string/detect_speed"
           app:layout_constraintEnd_toEndOf="parent"
           app:layout_constraintStart_toStartOf="parent"
@@ -45,30 +54,31 @@
 
 
       <TextView
-          android:textColor="@color/textColor"
           android:id="@+id/textSpeed"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
+          android:layout_marginTop="8dp"
           android:gravity="center"
           android:text="@string/speed"
+          android:textColor="@color/textColor"
           android:textSize="50sp"
           app:layout_constraintEnd_toEndOf="parent"
           app:layout_constraintStart_toStartOf="parent"
           app:layout_constraintTop_toBottomOf="@+id/buttonDedectSpeed" />
 
 
-   <com.google.android.gms.ads.AdView
+      <com.google.android.gms.ads.AdView
 
-       android:id="@+id/adView"
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
-       android:layout_alignParentBottom="true"
-       android:layout_centerHorizontal="true"
-       ads:adSize="BANNER"
-       ads:adUnitId="@string/banner_ad_unit_id"
-       app:layout_constraintBottom_toBottomOf="parent"
-       app:layout_constraintEnd_toEndOf="parent"
-       app:layout_constraintStart_toStartOf="parent"></com.google.android.gms.ads.AdView>
+          android:id="@+id/adView"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_alignParentBottom="true"
+          android:layout_centerHorizontal="true"
+          ads:adSize="BANNER"
+          ads:adUnitId="@string/banner_ad_unit_id"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"></com.google.android.gms.ads.AdView>
 
      </androidx.constraintlayout.widget.ConstraintLayout>
 

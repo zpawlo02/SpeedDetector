@@ -1,5 +1,6 @@
 package com.example.speeddetector;
 
+import com.example.speeddetector.R;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
@@ -12,10 +13,12 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.hardware.Camera;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -40,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
     private FrameLayout frameLayout;
     private CameraPreview showCamera;
     private Spinner spinnerObjects;
-    private Objects objects = new Objects();
+    private Objects objects;
     private Button buttonDetect;
     private Integer REQUEST_TAKE_VIDEO = 101,
             maxSpeed = 330, minSpeed = 0;
@@ -53,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        objects = new Objects(getApplicationContext());
         SharedPreferences preferences = getSharedPreferences("PREFS",0);
         boolean ifShowDialog = preferences.getBoolean("showDialog",true);
         if(ifShowDialog){
@@ -73,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
         buttonDetect = (Button) findViewById(R.id.buttonDedectSpeed);
         textViewSpeed = (TextView) findViewById(R.id.textSpeed);
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, objects.getObj());
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.spinner_item, objects.getObj());
         spinnerObjects.setAdapter(adapter);
         if (ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.CAMERA)
                 == PackageManager.PERMISSION_DENIED){
@@ -84,6 +87,10 @@ public class MainActivity extends AppCompatActivity {
         spinnerObjects.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                TextView textView = (TextView) view;
+                ((TextView) view).setGravity(Gravity.CENTER);
+                ((TextView) parent.getChildAt(0)).setTextColor(getResources().getColor(R.color.textColor));
+
                 maxSpeed = objects.getMaxes()[position];
                 minSpeed = objects.getMin()[position];
             }

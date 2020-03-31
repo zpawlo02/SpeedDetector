@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:ads="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -7,16 +7,13 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity"
     android:background="@color/backgroundColor">
-   <androidx.constraintlayout.widget.ConstraintLayout
-       android:layout_width="match_parent"
-       android:layout_height="match_parent">
+
 
       <FrameLayout
           android:id="@+id/flVideo"
-          android:layout_width="match_parent"
-          android:layout_height="400dp"
+          android:layout_width="0dp"
+          android:layout_height="350dp"
           android:layout_marginStart="1dp"
-          android:layout_marginTop="1dp"
           android:layout_marginEnd="1dp"
           app:layout_constraintEnd_toEndOf="parent"
           app:layout_constraintStart_toStartOf="parent"
@@ -27,15 +24,16 @@
       <Spinner
           android:id="@+id/spinnerChoseObject"
           android:layout_width="wrap_content"
-          android:layout_height="60dp"
+          android:layout_height="wrap_content"
           android:layout_marginStart="16dp"
-          android:layout_marginTop="16dp"
+          android:layout_marginTop="8dp"
           android:layout_marginEnd="16dp"
           android:background="@drawable/borderspinner"
           android:gravity="center"
           android:popupBackground="@drawable/borederbutton"
           android:spinnerMode="dropdown"
           app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintHorizontal_bias="0.498"
           app:layout_constraintStart_toStartOf="parent"
           app:layout_constraintTop_toBottomOf="@+id/flVideo" />
 
@@ -55,9 +53,8 @@
 
       <TextView
           android:id="@+id/textSpeed"
-          android:layout_width="match_parent"
+          android:layout_width="wrap_content"
           android:layout_height="wrap_content"
-          android:layout_marginTop="8dp"
           android:gravity="center"
           android:text="@string/speed"
           android:textColor="@color/textColor"
@@ -80,9 +77,5 @@
           app:layout_constraintEnd_toEndOf="parent"
           app:layout_constraintStart_toStartOf="parent"></com.google.android.gms.ads.AdView>
 
-     </androidx.constraintlayout.widget.ConstraintLayout>
 
-
-
-
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

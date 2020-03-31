@@ -1,6 +1,8 @@
 package com.example.speeddetector;
 
 import com.example.speeddetector.R;
+
+import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
@@ -15,10 +17,13 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.hardware.Camera;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.Gravity;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -45,11 +50,10 @@ public class MainActivity extends AppCompatActivity {
     private Spinner spinnerObjects;
     private Objects objects;
     private Button buttonDetect;
-    private Integer REQUEST_TAKE_VIDEO = 101,
+    private int REQUEST_TAKE_VIDEO = 1,
             maxSpeed = 330, minSpeed = 0;
     private TextView textViewSpeed;
     private AdView mAdView;
-    private boolean clicked;
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
@@ -119,21 +123,39 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra(MediaStore.EXTRA_DURATION_LIMIT, 5);
                 startActivityForResult(intent,REQUEST_TAKE_VIDEO);
                //TODO FIX SETTING SPEED
-                clicked = true;
+               // clicked = true;
 
             }
         });
     }
 
     @Override
-    protected void onStop() {
-        super.onStop();
-        if(clicked){
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQUEST_TAKE_VIDEO && resultCode == -1) {
             Random rs = new Random();
             textViewSpeed.setText(String.format("%.2f KM/H", rs.nextDouble() * (maxSpeed - minSpeed) + minSpeed));
-            clicked = false;
-        }
 
+        }
+        ;
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        camera.release();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        camera.release();
     }
 
     @Override

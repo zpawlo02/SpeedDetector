@@ -7,6 +7,9 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.Manifest;
 import android.app.Activity;
@@ -20,6 +23,7 @@ import android.hardware.Camera;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.Gravity;
@@ -29,6 +33,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.VideoView;
@@ -54,6 +59,9 @@ public class MainActivity extends AppCompatActivity {
             maxSpeed = 330, minSpeed = 0;
     private TextView textViewSpeed;
     private AdView mAdView;
+    private ProgressBar progressBar;
+    private int progressStatus = 0;
+    private Handler handler = new Handler();
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
@@ -79,7 +87,8 @@ public class MainActivity extends AppCompatActivity {
         spinnerObjects = (Spinner) findViewById(R.id.spinnerChoseObject);
         buttonDetect = (Button) findViewById(R.id.buttonDedectSpeed);
         textViewSpeed = (TextView) findViewById(R.id.textSpeed);
-
+        progressBar = (ProgressBar) findViewById(R.id.progressBa);
+        progressBar.setVisibility(View.INVISIBLE);
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.spinner_item, objects.getObj());
         spinnerObjects.setAdapter(adapter);
         if (ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.CAMERA)
@@ -122,8 +131,6 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MediaStore.ACTION_VIDEO_CAPTURE);
                 intent.putExtra(MediaStore.EXTRA_DURATION_LIMIT, 5);
                 startActivityForResult(intent,REQUEST_TAKE_VIDEO);
-               //TODO FIX SETTING SPEED
-               // clicked = true;
 
             }
         });
@@ -133,6 +140,14 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == REQUEST_TAKE_VIDEO && resultCode == -1) {
+
+
+            loadSpeed();
+
+            if(progressStatus > 100){
+
+            }
+
             Random rs = new Random();
             textViewSpeed.setText(String.format("%.2f KM/H", rs.nextDouble() * (maxSpeed - minSpeed) + minSpeed));
 
@@ -196,5 +211,48 @@ public class MainActivity extends AppCompatActivity {
         AlertDialog alertDialog = alertDialogBuilder.create();
         alertDialog.setCanceledOnTouchOutside(false);
         alertDialog.show();
+    }
+
+    private void loadSpeed(){
+
+        progressBar.setVisibility(View.VISIBLE);
+        spinnerObjects.setVisibility(View.INVISIBLE);
+        textViewSpeed.setVisibility(View.INVISIBLE);
+        buttonDetect.setVisibility(View.INVISIBLE);
+
+        new Thread(new Runnable() {
+            public void run() {
+                while (progressStatus < 100) {
+                    progressStatus += 2;
+                    // Update the progress bar and display the
+                    //current value in the text view
+                    handler.post(new Runnable() {
+                        public void run() {
+                            progressBar.setProgress(progressStatus);
+                        }
+                    });
+                    try {
+                        // Sleep for 200 milliseconds.
+                        Thread.sleep(100);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+                if(progressStatus >= 99){
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            progressBar.setVisibility(View.INVISIBLE);
+                            textViewSpeed.setVisibility(View.VISIBLE);
+                            buttonDetect.setVisibility(View.VISIBLE);
+                            spinnerObjects.setVisibility(View.VISIBLE);
+                            progressStatus = 0;
+                        }
+                        });
+
+                }
+            }
+        }).start();
+
     }
 }

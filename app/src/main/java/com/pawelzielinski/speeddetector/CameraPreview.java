@@ -1,4 +1,4 @@
-package com.example.speeddetector;
+package com.pawelzielinski.speeddetector;
 
 import android.content.Context;
 import android.hardware.Camera;

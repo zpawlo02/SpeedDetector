@@ -1,33 +1,24 @@
-package com.example.speeddetector;
+package com.pawelzielinski.speeddetector;
 
-import com.example.speeddetector.R;
+import com.pawelzielinski.speeddetector.R;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
 import android.Manifest;
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
-import android.graphics.Color;
 import android.hardware.Camera;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.provider.MediaStore;
-import android.util.Log;
 import android.view.Gravity;
-import android.view.KeyEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -36,15 +27,14 @@ import android.widget.FrameLayout;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.VideoView;
 
+import com.google.ads.mediation.admob.AdMobAdapter;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.initialization.InitializationStatus;
 import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 
-import java.io.IOException;
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
@@ -82,8 +72,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         mAdView = (AdView) findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder().build();
+        Bundle networkExtrasBundle = new Bundle();
+        networkExtrasBundle.putInt("rdp", 1);
+
+        AdRequest adRequest = new AdRequest.Builder().addNetworkExtrasBundle(AdMobAdapter.class, networkExtrasBundle).build();
+        //mAdView.setAdUnitId("ca-app-pub-4562905364103033/7446893681");
+//       mAdView.setAdSize(AdSize.SMART_BANNER);
         mAdView.loadAd(adRequest);
+
         spinnerObjects = (Spinner) findViewById(R.id.spinnerChoseObject);
         buttonDetect = (Button) findViewById(R.id.buttonDedectSpeed);
         textViewSpeed = (TextView) findViewById(R.id.textSpeed);

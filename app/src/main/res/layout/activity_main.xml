@@ -52,7 +52,7 @@
 
       <ProgressBar
           android:id="@+id/progressBa"
-          style="?android:attr/progressBarStyleHorizontal"
+
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:layout_gravity="center"
@@ -62,6 +62,8 @@
           android:minWidth="200dp"
           android:minHeight="200dp"
           android:progress="1"
+          android:indeterminateTintMode="src_atop"
+          android:indeterminateTint="@color/textColor"
           app:layout_constraintBottom_toTopOf="@+id/adView"
           app:layout_constraintEnd_toEndOf="parent"
           app:layout_constraintStart_toStartOf="parent"
@@ -92,12 +94,12 @@
       <com.google.android.gms.ads.AdView
 
           android:id="@+id/adView"
-          android:layout_width="wrap_content"
+          android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:layout_alignParentBottom="true"
           android:layout_centerHorizontal="true"
-          ads:adSize="BANNER"
-          ads:adUnitId="@string/banner_ad_unit_id"
+          ads:adSize="SMART_BANNER"
+          ads:adUnitId="ca-app-pub-4562905364103033/7446893681"
           app:layout_constraintBottom_toBottomOf="parent"
           app:layout_constraintEnd_toEndOf="parent"
           app:layout_constraintStart_toStartOf="parent"></com.google.android.gms.ads.AdView>
